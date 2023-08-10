@@ -1,0 +1,13 @@
+version: '3'
+services:
+  Django-CRUD-Auth:
+    image: python:3.9  # Usamos la imagen de Python 3.9
+    container_name: Django-CRUD-Auth
+    ports:
+      - "8000:8000"  # Puerto expuesto para Django
+    environment:
+      - PYTHONBUFFERED=1  # Configuración para desactivar el búfer de Python
+    working_dir: /app
+    volumes:
+      - .:/app  # Montamos el directorio del proyecto en el contenedor
+    command: sh -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:8000"
