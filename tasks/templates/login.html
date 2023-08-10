@@ -1,0 +1,11 @@
+{% extends 'layouts/main.html' %}
+
+{% block content %}
+	<h1>Login</h1>
+	{{ error }}
+	<form method="POST">
+		{% csrf_token %} {# Similar a laravel #}
+		{{ form.as_p }} {# renderiza un formulario que viene desde la vista. pero solo trae los controles, no el formulario como tal, de modo que toca meterlo dentro de etiquetas html form . el método as_p, sirve para organizar los controles #}
+		<button>Login</button>
+	</form>	 
+{% endblock %}

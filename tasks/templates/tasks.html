@@ -1,0 +1,24 @@
+{% extends 'layouts/main.html' %}
+
+{% block content %}
+	<h1>Tasks</h1>
+	<ul>
+		{% for task in tasks %}
+			<li>
+				<a href="{% url 'task' task.id %}">
+					{% if task.important %}
+						<h1>{{ task.title }}</h1>
+					{% else %}
+						<p>{{ task.title}}</p>
+					{% endif %}
+				</a>
+				<p>{{ task.description }}</p>
+				<p>{{ task.user.username }}</p>
+				<p>{{ task.date_completed|date:'M j Y H:i' }}</p> {# |date:'M j Y:i' me presenta la fecha y hora en formato: nombre de mes corto, día del mes en número sin ceros, año de 4 dígitos y los minutos del día, horas de 24 horas y minutos base 60. para el clásico yyyy-MM-dd usar: Y-m-d #}
+				<hr>				
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+
+
